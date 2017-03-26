@@ -1,31 +1,69 @@
-const {app, BrowserWindow} = require('electron')
+const electron = require('electron')
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
 const path = require('path')
 const url = require('url')
 
+const isKiosk = process.argv.includes('--kiosk')
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let priWindow
+let sndWindow
 
 function createWindow () {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  var priDisplay = electron.screen.getPrimaryDisplay()
+  let sndDisplay = electron.screen.getAllDisplays().find(d => d.id != priDisplay.id)
 
-  // and load the index.html of the app.
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+  priWindow = fullscreenWindowForDisplay(priDisplay)
+  priWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'primary.html'),
     protocol: 'file:',
     slashes: true
   }))
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  // if there's a seconday display, use it, otherwise show a little box in the
+  // bottom right corner
+  if (sndDisplay) {
+    sndWindow = fullscreenWindowForDisplay(sndDisplay)
+  } else {
+    sndWindow = new BrowserWindow({
+      height: 150,
+      width: 200,
+      y: priDisplay.bounds.y + priDisplay.workAreaSize.height - 200,
+      x: priDisplay.bounds.x + priDisplay.workAreaSize.width - 250,
+      frame: false,
+      backgroundColor: '#000',
+      closable: !isKiosk,
+      kiosk: isKiosk,
+      alwaysOnTop: true,
+    })
+  }
+  sndWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'secondary.html'),
+    protocol: 'file:',
+    slashes: true
+  }))
 
-  // Emitted when the window is closed.
-  mainWindow.on('closed', function () {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    mainWindow = null
+  electron.ipcMain.on(
+    'set-color',
+    (ev, color) => sndWindow.webContents.send('set-color', color))
+
+  // Open the DevTools.
+  //priWindow.webContents.openDevTools()
+  //sndWindow.webContents.openDevTools()
+}
+
+function fullscreenWindowForDisplay(display) {
+  return new BrowserWindow({
+    height: display.workAreaSize.height,
+    width: display.workAreaSize.width,
+    x: display.bounds.x,
+    y: display.bounds.y,
+    fullscreen: true,
+    backgroundColor: '#000',
+    closable: !isKiosk,
+    kiosk: isKiosk,
   })
 }
 
@@ -46,7 +84,7 @@ app.on('window-all-closed', function () {
 app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (mainWindow === null) {
+  if (priWindow === null) {
     createWindow()
   }
 })

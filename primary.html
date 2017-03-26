@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Persönlichkeitstest</title>
+    <link rel="stylesheet" href="./css/bulma.min.css" type="text/css">
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+  </head>
+  <body>
+    <section class="hero is-fullheight is-bbh is-bold">
+      <div id="header" class="hero-header">
+        <div class="header">
+          <div class="container">
+            <div class="header-left">
+              <span class="header-item">
+                <a class="intro-button button is-medium arrow-before arrow-small">
+                  Zurück zum Start
+                </a>
+              </span>
+            </div>
+            <div id="progress" class="header-right">
+              <span class="header-item">
+                <span class="title">Alternativer Einbürgerungstest:</span>
+                <span class="counter-text">Schritt</span>
+                <span class="counter"></span>
+                <span class="counter-text">
+                  von
+                  <span id="questions-needed"></span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="intro" class="hero-content">
+        <div class="container">
+          <h1 class="title">Alternativer Einbürgerungstest</h1>
+          <div class="content">
+            <p>
+            Teste Dein Wissen und miss Dich mit den anderen Besuchern der Ausstellung.
+            </p>
+          </div>
+          <a id="quiz-button" class="button is-large arrow-after arrow-big">
+            Zum Start
+          </a>
+        </div>
+      </div>
+
+      <div id="quiz" class="hero-content">
+        <div class="container">
+          <div class="question title"></div>
+          <div class="answers">
+            <a href="#" class="answer button is-large"></a>
+            <a href="#" class="answer button is-large"></a>
+            <a href="#" class="answer button is-large"></a>
+            <a href="#" class="answer button is-large"></a>
+            <a href="#" class="answer button is-large"></a>
+            <a href="#" class="answer button is-large"></a>
+          </div>
+        </div>
+      </div>
+
+      <div id="score" class="hero-content">
+        <div class="container">
+          <h1 class="title"></h1>
+          <p>
+            <span class="score-text"></span>
+          </p>
+          <a class="intro-button button is-large arrow-before arrow-big">
+            Zurück zum Start
+          </a>
+        </div>
+      </div>
+
+      <div class="icons"></div>
+    </section>
+  </body>
+
+  <script>
+    // You can also require other files to run in this process
+    require('./primary.js')
+  </script>
+</html>
