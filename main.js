@@ -56,11 +56,13 @@ function createWindow () {
 
 function fullscreenWindowForDisplay(display) {
   return new BrowserWindow({
-    height: display.workAreaSize.height,
-    width: display.workAreaSize.width,
+    width: 1280,
+    height: 800,
+    //width: display.workAreaSize.width,
+    //height: display.workAreaSize.height,
     x: display.bounds.x,
     y: display.bounds.y,
-    fullscreen: true,
+    fullscreen: isKiosk,
     backgroundColor: '#000',
     closable: !isKiosk,
     kiosk: isKiosk,

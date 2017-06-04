@@ -4,7 +4,9 @@
   "description": "A personality test for a museum exhibition by Buddenbrookhaus in Lübeck, Germany",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "build": "electron-packager . bbh-persoenlichkeitstest --platform=win32"
   },
   "author": "bo@kbct.de",
   "contributors": [
@@ -12,6 +14,7 @@
   ],
   "license": "ISC",
   "devDependencies": {
-    "electron": "^1.6.2"
+    "electron": "^1.6.10",
+    "electron-packager": "^8.6.0"
   }
 }
