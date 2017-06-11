@@ -179,6 +179,7 @@ const translations = {
       "introText1": "Du wolltest schon immer\nein Teil der Familie Mann sein?",
       "introText2": "Teste, welche/-r\nMann am besten zu\ndir passt!",
       "start": "Start",
+      "yourMatch": "Dein/-e Mann:",
     },
   },
   "en": {
@@ -355,6 +356,7 @@ const translations = {
       "introText1": "Have you always wanted\nto be part of the Mann family?",
       "introText2": "Test which Mann suits you best!",
       "start": "Start",
+      "yourMatch": "Your match:",
     },
   }
 };
@@ -496,8 +498,8 @@ const elements = {
   questionsNeeded: document.querySelector('#questions-needed'),
   question: document.querySelector('.question'),
   answers: Array.from(document.querySelectorAll('.answer')),
-  scoreTitle: document.querySelector('#score .title'),
-  scoreText: document.querySelector('#score .score-text'),
+  scoreName: document.querySelector('#score-name'),
+  scoreText: document.querySelector('#score-text'),
   languageOverlay: document.querySelector('#languageoverlay'),
   pages: {
     intro: document.querySelector('#intro'),
@@ -512,6 +514,7 @@ const elements = {
     introText1: document.querySelector('#intro-text-1'),
     introText2: document.querySelector('#intro-text-2'),
     start: document.querySelector('#quiz-button'),
+    yourMatch: document.querySelector('#score-title'),
   },
 };
 
@@ -641,6 +644,7 @@ function renderScore() {
   let color = colors[name];
   let text = translations[state.language].evaluations[name];
 
+  elements.scoreName.textContent = name + ' Mann';
   elements.scoreText.textContent = text;
   ipcRenderer.send('set-color', color);
 }

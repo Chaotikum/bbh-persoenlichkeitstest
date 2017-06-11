@@ -58,6 +58,7 @@ p {
 
 .counter,
 .counter-text {
+  font-family: 'futura-condensed';
   font-size: 24px;
   padding: 0 8px;
 }
@@ -66,16 +67,16 @@ p {
   background-color: #b3b3b3;
   position: absolute;
   top: 0;
-  height: 72px;
-  width: 43px;
+  height: 69px;
+  width: 36px;
 }
 
 :lang(de) .counter-bg {
-  right: 142px;
+  right: 116px;
 }
 
 :lang(en) .counter-bg {
-  right: 124px;
+  right: 106px;
 }
 
 .hero-content {
@@ -113,8 +114,7 @@ p {
 
 .button,
 .button:focus {
-  font-family: 'futura-pro-book';
-  font-weight: bold;
+  font-family: 'futura-condensed';
 
   color: white;
   background-color: #b3b3b3;
@@ -129,7 +129,7 @@ p {
 
 .button.is-large {
   height: 60px;
-  font-size: 47px;
+  font-size: 44px;
 }
 
 .button:hover,
@@ -229,7 +229,8 @@ p {
 }
 
 .language-button {
-  width: 200px;
+  width: 230px;
+  margin-bottom: 10px;
 }
 
 
@@ -247,6 +248,7 @@ p {
 }
 
 #intro-text-1 {
+  font-family: 'futura-pro-book';
   line-height: 1.1em;
 }
 
@@ -256,6 +258,10 @@ p {
   font-size: 41px;
   line-height: 1.25em;
   text-transform: uppercase;
+}
+
+#quiz-button {
+  padding-right: 135px;
 }
 
 /**
@@ -277,13 +283,15 @@ p {
 }
 
 .answer.button {
+  font-family: 'futura-pro-book';
   text-transform: none;
   height: 50px;
+  font-size: 30px;
 }
 
 .answer.button.arrow-before::before {
   content: '▶︎';
-  font-size: 25px;
+  font-size: 26px;
 }
 
 .answer.clicked {
@@ -295,6 +303,12 @@ p {
  * score
  */
 
-.score-text {
+#score-name {
+  font-size: 72px;
+}
+
+#score-name,
+#score p {
   font-family: 'futura-pro-book';
+  margin-bottom: 0;
 }

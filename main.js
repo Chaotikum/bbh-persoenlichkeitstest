@@ -56,10 +56,8 @@ function createWindow () {
 
 function fullscreenWindowForDisplay(display) {
   return new BrowserWindow({
-    width: 1280,
-    height: 800,
-    //width: display.workAreaSize.width,
-    //height: display.workAreaSize.height,
+    width: isKiosk ? display.workAreaSize.width : 1280,
+    height: isKiosk ? display.workAreaSize.height : 800,
     x: display.bounds.x,
     y: display.bounds.y,
     fullscreen: isKiosk,
