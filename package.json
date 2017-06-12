@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "build": "electron-packager . bbh-persoenlichkeitstest --platform=win32"
+    "build": "electron-packager . bbh-persoenlichkeitstest --platform=win32 --arch=ia32"
   },
   "author": "bo@kbct.de",
   "contributors": [

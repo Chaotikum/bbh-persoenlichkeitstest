@@ -96,13 +96,13 @@ p {
   font-size: 45px;
 }
 
+.header-item .button:hover,
 .header-item .button,
 .button.header-item {
   color: white;
   background-color: #b3b3b3;
 }
 
-.header-item .button:hover,
 .header-item .button:active {
   color: #b3b3b3;
   background-color: white;
@@ -113,6 +113,7 @@ p {
 }
 
 .button,
+.button:hover,
 .button:focus {
   font-family: 'futura-condensed';
 
@@ -132,7 +133,6 @@ p {
   font-size: 44px;
 }
 
-.button:hover,
 .button:active {
   color: #b3b3b3;
   background-color: white;
@@ -194,7 +194,7 @@ p {
 .button.arrow-before.is-medium::before {
   font-size: 21px;
   left: 0.5em;
-  height: 22px;
+  height: 24px;
   /*width: 30px;*/
 }
 
@@ -292,6 +292,7 @@ p {
 .answer.button.arrow-before::before {
   content: '▶︎';
   font-size: 26px;
+  height: 26px;
 }
 
 .answer.clicked {

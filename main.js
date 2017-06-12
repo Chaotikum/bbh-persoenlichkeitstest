@@ -35,7 +35,6 @@ function createWindow () {
       frame: false,
       backgroundColor: '#000',
       closable: !isKiosk,
-      kiosk: isKiosk,
       alwaysOnTop: true,
     })
   }
