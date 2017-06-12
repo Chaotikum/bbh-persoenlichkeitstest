@@ -7,6 +7,8 @@ Germany, to be shown at the exhibition ["What a family!"][ex].
 It's based on [bbh-einbuergerungstest][einb], but now wrapped in [Electron][ele]
 so it can make use of multiple displays.
 
+Resource files like images or fonts are not in this repo for legal reasons.
+
 Kiosk mode on Windows 10 Home
 -----------------------------
 
