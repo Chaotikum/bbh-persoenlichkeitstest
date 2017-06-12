@@ -522,6 +522,7 @@ const elements = {
 const questionsNeeded = questionData.length;
 
 let state = {
+  resetTimer: -1,
   showLangugages: true,
   language: null,
   page: 'intro',
@@ -537,6 +538,16 @@ let state = {
     "Leonie":    0,
   }
 };
+
+function rescheduleResetTimeout() {
+  if (state.resetTimer > 0) clearTimeout(state.resetTimer);
+
+  state.resetTimer = setTimeout(onTimeoutReset, 2 * 60 * 1000);
+}
+
+function onTimeoutReset() {
+  reset();
+}
 
 function reset() {
   state.showLangugages = true;
@@ -575,6 +586,8 @@ function showScore() {
 }
 
 function render() {
+  rescheduleResetTimeout();
+
   if (state.language !== null) {
     document.body.lang = state.language;
   }
@@ -669,6 +682,9 @@ function setLanguage(lang) {
 }
 
 function onClickAnswer(event) {
+  // extra rescheduling since we're messing with timers here as well
+  rescheduleResetTimeout();
+
   let answerIndex = event.target.dataset.answerIndex;
   let name = questionData[state.questionIndex][answerIndex];
   state.answers[name]++;
